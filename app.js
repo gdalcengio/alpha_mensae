@@ -12,8 +12,7 @@ mongoose.connect(
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
-    }
-);
+    });
 
 //on connection
 mongoose.connection.on('connected', () => {
@@ -21,7 +20,7 @@ mongoose.connection.on('connected', () => {
 });
 
 //on error
-mongoose.connection.on('connected', (err) => {
+mongoose.connection.on('error', (err) => {
     console.log('Database error '+err);
 });
 
