@@ -22,5 +22,15 @@ export class AuthService {
     .pipe(map(res => res));
   }
 
+  storeUserData(token:any, user:any) {
+    //save token in local system where jwt checks
+    localStorage.setItem('id_token', token);
+    localStorage.setItem('user', JSON.stringify(user));
+
+    this.authToken = token;
+    this.user = user;
+
+  }
+
 
 }
