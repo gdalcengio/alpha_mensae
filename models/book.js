@@ -20,6 +20,10 @@ const BookSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    img: {
+        data: Buffer,
+        contentType: String
+    },
     link: {
         type: String,
         required: true

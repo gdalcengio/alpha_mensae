@@ -3,22 +3,25 @@ const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 
-const User = require('../models/user');
+const Book = require('../models/book');
+const book = require('../models/book');
 
-//Register
-router.post('/register', (req, res, next) =>{
-    let newUser = new User({
-        name: req.body.name,
-        email: req.body.email,
-        username: req.body.username,
-        password: req.body.password
+//add
+router.post('/add', (req, res, next) =>{
+    let newBook = new User({
+        title: req.body.title,
+        author: req.body.author,
+        publisher: req.body.publisher,
+        review: req.body.review,
+        link: req.body.link,
+        img: req.body.img
     });
 
-    User.addUser(newUser, (err, user) => {
+    Book.addBook(newBook, (err, user) => {
         if (err) {
-            res.json({success: false, msg:'Failed to register user'});
+            res.json({success: false, msg:'Failed to add book'});
         } else {
-            res.json({success: true, msg:'User registered'});
+            res.json({success: true, msg:'Book added'});
         }
     });
 });
@@ -29,8 +32,21 @@ router.get('/', (req, res, next) =>{
 });
 
 //Add Book
-router.post('/add', (req, res, next) =>{
-    res.send('ADD');
+router.get('/add', passport.authenticate('jwt', {session: false}), (req, res, next) =>{
+    const username = req.body.username;
+    const password = req.body.password;
+
+    res.json({
+        success: true,
+        book: {
+            title: book.title,
+            author: book.author,
+            publisher: book.publisher,
+            link: book.link,
+            review: book.review,
+            img: book.img
+        }
+    });
 });
 
 module.exports = router;

@@ -1,0 +1,47 @@
+<form (submit)="onBookSubmit()">
+  <br><br>
+  <h1>Here is where you add books</h1>
+  <h6>(only you have access)</h6><br><br>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <!-- title -->
+      <label for="book-title">Title of the book</label>
+      <input type="text" [(ngModel)]="title" class="form-control" id="book-title" name="title" placeholder="Title">
+    </div>
+    <div class="form-group col-md-6">
+      <!-- author -->
+      <label for="book-author">Author of the book</label>
+      <input type="text" [(ngModel)]="author" class="form-control" id="book-author" name="author" placeholder="Author">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <!-- publisher -->
+      <label for="book-publisher">Book's publisher</label>
+      <input type="text" [(ngModel)]="publisher" class="form-control" id="book-publisher" name="publisher" placeholder="Publishing House">
+    </div>
+    <div class="form-group col-md-6">
+      <!-- link to purchase -->
+      <label for="book-link">Link to the book</label>
+      <input type="text" [(ngModel)]="link" class="form-control" id="book-link" name="link" placeholder="www.amazon.ca/book-link">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <!-- review -->
+    <label for="book-review">Short Review</label>
+    <textarea [(ngModel)]="review" class="form-control" id="book-review" name="review" rows="3"></textarea>
+  </div>
+
+  <!-- image thumbnail -->
+  <div class="form-group">
+    <label for="book-thumbnail">Image for the thumbnail of the book</label>
+    <input [(ngModel)]="img" type="file" class="form-control-file" id="book-thumbnail" name="img">
+  </div>
+
+  <!-- submit -->
+  <br><br>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
