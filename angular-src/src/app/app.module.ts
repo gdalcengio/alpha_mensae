@@ -12,6 +12,7 @@ import { RouterModule, Routes} from '@angular/router';
 import { AddBookComponent } from './components/add-book/add-book.component'
 
 import {AuthService} from './services/auth.service';
+import { BookService } from './services/book.service';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -35,7 +36,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AuthService],
+  providers: [AuthService, BookService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

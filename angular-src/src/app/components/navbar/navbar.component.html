@@ -8,13 +8,13 @@
     <div class="collapse navbar-collapse" id="navbarsExample07">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['/']">Home</a>
+          <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/']">Home</a>
         </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/about']">About</a>
+        </li> -->
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/about']">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/books']">Books</a>
+          <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/books']">Books</a>
         </li>
       </ul>
       <!-- <form class="form-inline my-2 my-md-0">

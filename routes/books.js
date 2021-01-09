@@ -2,13 +2,53 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
+const multer  = require('multer');
 
 const Book = require('../models/book');
-const book = require('../models/book');
+
+//declaring multer function to upload images (might need to be wrapped in fun
+//function idk)
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, './public/images');
+    },
+    filename: (req, file, cb) => {
+      console.log(file);
+      var filetype = '';
+      if(file.mimetype === 'image/gif') {
+        filetype = 'gif';
+      }
+      if(file.mimetype === 'image/png') {
+        filetype = 'png';
+      }
+      if(file.mimetype === 'image/jpeg') {
+        filetype = 'jpg';
+      }
+      cb(null, 'image-' + Date.now() + '.' + filetype);
+    }
+});
+
+var upload = multer({storage: storage});
+
+//image upload route
+router.post('/', upload.single('file'), function(req, res, next) {
+    if(!req.file) {
+        return res.status(500).send({ message: 'Upload fail'});
+    } else {
+        req.body.imageUrl = 'http://192.168.0.7:3000/images/' + req.file.filename;
+        Gallery.create(req.body, function (err, gallery) {
+            if (err) {
+                console.log(err);
+                return next(err);
+            }
+            res.json(gallery);
+        });
+    }
+});
 
 //add
-router.post('/add', (req, res, next) =>{
-    let newBook = new User({
+router.post('/addabook', (req, res, next) =>{
+    let newBook = new Book({
         title: req.body.title,
         author: req.body.author,
         publisher: req.body.publisher,
@@ -17,7 +57,7 @@ router.post('/add', (req, res, next) =>{
         img: req.body.img
     });
 
-    Book.addBook(newBook, (err, user) => {
+    Book.addBook(newBook, (err, book) => {
         if (err) {
             res.json({success: false, msg:'Failed to add book'});
         } else {
@@ -29,24 +69,6 @@ router.post('/add', (req, res, next) =>{
 //All books
 router.get('/', (req, res, next) =>{
     res.send('books find');
-});
-
-//Add Book
-router.get('/add', passport.authenticate('jwt', {session: false}), (req, res, next) =>{
-    const username = req.body.username;
-    const password = req.body.password;
-
-    res.json({
-        success: true,
-        book: {
-            title: book.title,
-            author: book.author,
-            publisher: book.publisher,
-            link: book.link,
-            review: book.review,
-            img: book.img
-        }
-    });
 });
 
 module.exports = router;

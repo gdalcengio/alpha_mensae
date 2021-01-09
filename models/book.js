@@ -4,6 +4,9 @@ const config = require('../config/database');
 
 //Book Schema
 const BookSchema = mongoose.Schema({
+    id: {
+        type: String
+    },
     title: {
         type: String,
         required: true
