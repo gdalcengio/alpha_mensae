@@ -31,18 +31,20 @@ var storage = multer.diskStorage({
 var upload = multer({storage: storage});
 
 //image upload route
-router.post('/', upload.single('file'), function(req, res, next) {
+router.post('/img', upload.any(), function(req, res, next) {
+    console.log(req.body);
     if(!req.file) {
         return res.status(500).send({ message: 'Upload fail'});
     } else {
         req.body.imageUrl = 'http://192.168.0.7:3000/images/' + req.file.filename;
-        Gallery.create(req.body, function (err, gallery) {
-            if (err) {
-                console.log(err);
-                return next(err);
-            }
-            res.json(gallery);
-        });
+        // Gallery.create(req.body, function (err, gallery) {
+        //     if (err) {
+        //         console.log(err);
+        //         return next(err);
+        //     }
+        //     res.json(gallery);
+        // });
+        res.json(req);
     }
 });
 

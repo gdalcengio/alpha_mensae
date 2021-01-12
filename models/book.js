@@ -30,7 +30,8 @@ const BookSchema = mongoose.Schema({
     link: {
         type: String,
         required: true
-    }
+    },
+    tags: []
 });
 
 const Book = module.exports = mongoose.model('Book', BookSchema);

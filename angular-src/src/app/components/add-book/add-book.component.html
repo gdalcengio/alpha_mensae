@@ -1,4 +1,4 @@
-<form (submit)="onBookSubmit()">
+<form (submit)="onFileUpload()">
   <br><br>
   <h1>Here is where you add books</h1>
   <h6>(only you have access)</h6><br><br>
@@ -37,8 +37,10 @@
 
   <!-- image thumbnail -->
   <div class="form-group">
-    <label for="book-thumbnail">Image for the thumbnail of the book</label>
-    <input [(ngModel)]="img" type="file" class="form-control-file" id="book-thumbnail" name="img">
+    <!-- <label for="book-thumbnail">Image for the thumbnail of the book</label>
+    <input [(ngModel)]="img" type="file" class="form-control-file" id="book-thumbnail" name="img"> -->
+    <label for="file">Choose File</label>
+    <input #fileInput type="file" id="file">
   </div>
 
   <!-- submit -->

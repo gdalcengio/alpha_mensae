@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { BookService } from '../../services/book.service';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-book',
@@ -8,6 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-book.component.css']
 })
 export class AddBookComponent implements OnInit {
+
+  @ViewChild('fileInput', { static: false }) fileInput: ElementRef | undefined;
+
   title: String ="";
   author: String ="";
   publisher: String ="";
@@ -17,20 +21,22 @@ export class AddBookComponent implements OnInit {
 
   constructor(
     private bookService:BookService,
-    private router:Router
+    private router:Router,
+    private http:HttpClient
   ) { }
 
   ngOnInit(): void {
   }
 
-  onBookSubmit() {
+  submitBook(filename: String) {
     const book = {
       title : this.title,
       author : this.author,
       publisher: this.publisher,
       review: this.review,
       link: this.link,
-      img: this.img
+      img: filename,
+
     }
 
     this.bookService.storeBookData(book).subscribe(data => {
@@ -45,6 +51,17 @@ export class AddBookComponent implements OnInit {
     });
   }
 
+  onFileUpload() {
+    const imageBlob = this.fileInput?.nativeElement.files[0];
+    const file = new FormData();
+    file.set('file', imageBlob);
+
+    this.http.post<any>('http://localhost:3000/image-upload', file).subscribe(response => {
+      console.log(response.filename);
+      // this.submitBook(response[3]);
+    });
+
+  }
 
 
 }
