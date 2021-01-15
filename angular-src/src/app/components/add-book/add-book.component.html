@@ -65,6 +65,7 @@
     pirates           this will end up being in ts file
    -->
 
+  <p>Genres</p>
   <div *ngFor="let data of Data; let i=index">
     <label>
       <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event)" />
@@ -76,8 +77,10 @@
   <div class="form-group">
     <!-- <label for="book-thumbnail">Image for the thumbnail of the book</label>
     <input [(ngModel)]="img" type="file" class="form-control-file" id="book-thumbnail" name="img"> -->
-    <label for="file">Choose File</label>
-    <input #fileInput type="file" id="file">
+    <label for="file">Choose File:
+      <br>
+      <input #fileInput type="file" id="file">
+    </label>
   </div>
 
   <!-- submit -->
