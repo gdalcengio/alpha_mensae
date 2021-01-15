@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -11,7 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { RouterModule, Routes} from '@angular/router';
 import { AddBookComponent } from './components/add-book/add-book.component'
 
-import {AuthService} from './services/auth.service';
+import { AuthService } from './services/auth.service';
 import { BookService } from './services/book.service';
 
 const appRoutes: Routes = [
@@ -33,6 +33,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],

@@ -35,6 +35,43 @@
     <textarea [(ngModel)]="review" class="form-control" id="book-review" name="review" rows="3"></textarea>
   </div>
 
+  <!-- list of genres:  (he only wants the one listed on the papers)
+    fiction
+    nonfiction
+    classic
+    crime
+    epic
+    fable
+    fairy tale
+    fantasy
+    folktale
+    gothic
+    historical
+    horror
+    comedy
+    legend
+    magic
+    romantic irony
+    mystery
+    mythology
+    mythopoeia
+    realistic
+    romance
+    satire
+    science
+    short story
+    spy
+    superhero
+    pirates           this will end up being in ts file
+   -->
+
+  <div *ngFor="let data of Data; let i=index">
+    <label>
+      <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event)" />
+      {{data.name}}
+    </label>
+  </div>
+
   <!-- image thumbnail -->
   <div class="form-group">
     <!-- <label for="book-thumbnail">Image for the thumbnail of the book</label>

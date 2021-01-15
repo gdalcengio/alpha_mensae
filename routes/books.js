@@ -56,7 +56,8 @@ router.post('/addabook', (req, res, next) =>{
         publisher: req.body.publisher,
         review: req.body.review,
         link: req.body.link,
-        img: req.body.img
+        img: req.body.img,
+        tags: req.body.tags
     });
 
     Book.addBook(newBook, (err, book) => {

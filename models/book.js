@@ -24,14 +24,16 @@ const BookSchema = mongoose.Schema({
         required: true
     },
     img: {
-        data: Buffer,
-        contentType: String
+        type: String,
+        required: true
     },
     link: {
         type: String,
         required: true
     },
-    tags: []
+    tags: [{
+        type: String
+    }]
 });
 
 const Book = module.exports = mongoose.model('Book', BookSchema);
@@ -40,11 +42,7 @@ module.exports.getBooks = function(callback){
     Book.find(callback);
 }
 
-// module.exports.getUserByUsername = function(username, callback){
-//     const query = {username: username}
-//     User.findOne(query, callback);
-// }
-
 module.exports.addBook = function(newBook, callback) {
+    console.log(newBook.tags);
     newBook.save(callback);
 }
