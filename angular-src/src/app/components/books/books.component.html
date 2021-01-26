@@ -1,1 +1,9 @@
-<p>books works!</p>
+<h2>Selection</h2>
+
+<div *ngFor="let book of books">
+  <h3>
+    <a [title]="book.title + ' details'">
+      {{ book.title }}
+    </a>
+  </h3>
+</div>

@@ -3,6 +3,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
+export interface Book{
+  id?: String;
+  title?: String;
+  author?: String;
+  review?: String;
+  publisher?: String;
+  img?: String;
+  link?: String;
+  tags?: String[];
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -42,5 +53,15 @@ export class BookService {
   //   // return Promise.reject(e.message || e);
   // }
 
+  public getAllBooks(): Observable<any> {
+    console.log('hit book service');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.get<any>('http://localhost:3000/books/getBooks', httpOptions).pipe(res => res);
+  }
 
 }

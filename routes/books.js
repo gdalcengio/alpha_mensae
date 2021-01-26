@@ -70,8 +70,30 @@ router.post('/addabook', (req, res, next) =>{
 });
 
 //All books
-router.get('/', (req, res, next) =>{
-    res.send('books find');
+router.get('/getBooks', (req, res) =>{
+    Book.find().then(doc => {
+        console.log("from database", doc);
+        if (doc) {
+            res.status(200).json({success: true, msg:'get boks hit', doc: doc});
+        }
+    }).catch();
+    // detail.find({}, function(err, result) {
+    //     if (err) {
+    //         console.log(err);
+    //     } else {
+    //         res.json(result);
+    //     }
+    // });
+    console.log(req);
+    console.log(res);
+    // Book.getBooks(function(req, res) {
+    //     // if (err) {
+    //     //     console.log(err);
+    //     // } else {
+    //         res.json(res);
+    //     // }
+    // });
+    // res.send('books find');
 });
 
 module.exports = router;

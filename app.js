@@ -38,10 +38,13 @@ app.use(cors());
 app.post('/image-upload', upload.single('file'), (req, res) => {
     res.json({success: true, msg:'Image Uploaded', filename: req.file.filename});
 })
+
+// app.get('/books/getBooks', (req, res) => {
+//     console.log("hit app");
+//     res.json({success: true, msg:'get boks hit'});
+// })
     
 
-const users = require('./routes/users');
-const books = require('./routes/books');
 
 //Port Number
 const port = 3000;
@@ -49,10 +52,15 @@ const port = 3000;
 //CORS Middleware
 app.use(cors());
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
     next();
-  });
+});
+
+const users = require('./routes/users');
+const books = require('./routes/books');
 
 //Set Static Folder (serves it essentially)
 app.use(express.static(path.join(__dirname, 'public')));

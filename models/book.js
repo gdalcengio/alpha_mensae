@@ -39,7 +39,20 @@ const BookSchema = mongoose.Schema({
 const Book = module.exports = mongoose.model('Book', BookSchema);
 
 module.exports.getBooks = function(callback){
-    Book.find(callback);
+    console.log("hit models");
+    // Book.find(callback);
+
+    // MongoClient.connect(url, function(err, db) {
+    //     if (err) throw err;
+    //     var dbo = db.db("vivissimiDB");
+    //     dbo.collection("books").find({}).toArray(function(err, result) {
+    //       if (err) throw err;
+    //       console.log(result);
+    //       db.close();
+    //     });
+    //   });
+
+    
 }
 
 module.exports.addBook = function(newBook, callback) {
