@@ -1,0 +1,251 @@
+/* config */
+@font-face {
+    font-family: 'playfair';
+    src: url("PlayfairDisplay-VariableFont_wght.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: 'playfair-black';
+    src: url("PlayfairDisplay-Black.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: 'fauna';
+    src: url("FaunaOne-Regular.ttf") format('truetype');
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: 'fauna', sans-serif;
+    margin-bottom: 30rem;
+    background-color: #D7CEC7;
+    color: #565656;
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: #76323F;
+}
+
+h1 {
+    
+    font-family: 'playfair-black', 'playfair', serif;
+    font-weight: 900;
+    font-size: 32px;
+    margin: 2rem 0;
+    max-width: 32rem;
+    text-align: center;
+}
+
+h1 a {
+    text-decoration: none;
+}
+
+h2 {
+    /* padding-top: 2rem; */
+    color: #76323F;
+}
+
+h3 {
+    color: black;
+
+}
+
+h4 {
+    font-style: italic;
+}
+
+p {
+    font-size: 18px;
+}
+
+.content {
+    width: 90%;
+    max-width: 40rem;
+    margin: 0 auto;
+    padding-top: 1rem;
+}
+
+/* front page */
+.title-container {
+    width: 90%;
+    margin: 6rem auto;
+    display: block;
+    justify-content: space-evenly;
+    top: 33%;
+}
+
+.title {
+    position: block;
+    margin: 2rem 0;
+    font-size: 32px;
+    max-width: 32rem;
+    text-align: center;
+    flex: 1;
+}
+
+.about {
+    position: relative;
+    margin: 2rem auto;
+    padding: 2rem 0;
+    max-width: 20rem;
+    flex: 1;
+}
+
+.book {
+    display: block;
+    margin-bottom: 3rem;
+}
+
+.book-thumbnail {
+    flex: 1;
+    padding: 1rem;
+    max-width: 12rem;
+    object-fit: contain;
+    top: 0;
+}
+
+.banner {
+    display:block;
+    position:fixed;
+    top: 0;
+    z-index: -1;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    width: 100%;
+    height: 30vh;
+    /* object-fit: cover;
+    object-position: center 130%; */
+    background-image: 
+        linear-gradient(#d7cec766, #D7CEC7),
+        url("img/book_banner.jpg");
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    background-position: center top;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-evenly;
+    width: 80vw;
+    margin: 0 auto;
+}
+
+.navbar a {
+    margin: 1rem;
+}
+
+.front-cards {
+    display: block;
+}
+
+.content-card {
+    margin: 1rem;
+    flex: 1;
+}
+
+#italian-link {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    border-radius: 0 20px;
+    border: solid 1px black;
+    padding: .5rem;
+}
+
+.temp-caption {
+    padding: 1rem;
+}
+
+@media only screen and (min-width: 769px) {
+    .content {
+        width: 90%;
+        max-width: 50rem;
+        margin: 0 auto;
+    }
+
+    .title-container {
+        width: 80%;
+        margin: 6rem auto;
+        display: flex;
+        justify-content: space-evenly;
+        top: 33%;
+    }
+    
+    .title {
+        position: relative;
+        margin: 2rem 0;
+        padding: 0 2rem;
+        font-size: 48px;
+        max-width: 32rem;
+        text-align: center;
+        flex: 1;
+    }
+
+    .about {
+        position: relative;
+        margin: 2rem 0;
+        padding: 2rem;
+        max-width: 20rem;
+        flex: 1;
+    }
+
+    .book {
+        display: flex;
+        align-items: flex-start;
+    }
+    
+    .banner {
+        display:block;
+        position:fixed;
+        top: 0;
+        z-index: -1;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        width: 100%;
+        height: 30vh;
+        /* object-fit: cover;
+        object-position: center 130%; */
+        background-image: 
+            linear-gradient(#d7cec766, #D7CEC7)
+            url("img/book_banner.jpg");
+        background-repeat: no-repeat;
+        /* background-attachment: fixed; */
+        background-position: center top;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 3rem;
+    }
+    
+    .navbar a {
+        /* margin: 2rem; */
+        color: black;
+    }
+
+    .navbar a:hover {
+        color: #76323F;
+    }
+
+    .front-cards {
+        display:flex;
+        justify-content: space-evenly;
+    }
+
+    .content-card {
+        margin: 1rem;
+        flex: 1;
+    }
+}
